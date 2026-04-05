@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Custom scrollbar for dark mode */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+}
+
+@layer components {
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl;
+  }
+
+  /* Smooth theme transition on all elements */
+  .theme-transition {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Number font */
+  .font-num {
+    font-family: 'DM Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Animated gradient border for cards on hover */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  /* Status badges */
+  .badge-income {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400;
+  }
+
+  .badge-expense {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-semibold text-sm transition-all duration-150 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-semibold text-sm transition-all duration-150;
+  }
+
+  .btn-danger {
+    @apply px-3 py-1.5 bg-red-100 hover:bg-red-200 dark:bg-red-500/20 dark:hover:bg-red-500/30 text-red-600 dark:text-red-400 rounded-lg font-medium text-xs transition-all duration-150;
+  }
+
+  /* Input styles */
+  .input-base {
+    @apply w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all;
+  }
+
+  /* Label */
+  .label-base {
+    @apply block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wide;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-lg font-bold text-slate-900 dark:text-slate-100;
+  }
+}
+
+/* Animated gradient background on hero/stat cards */
+.stat-card-income {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+}
+.dark .stat-card-income {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.06) 100%);
+}
+
+.stat-card-expense {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+}
+.dark .stat-card-expense {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.06) 100%);
+}
+
+.stat-card-balance {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+.dark .stat-card-balance {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.06) 100%);
+}
+
+.stat-card-savings {
+  background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+}
+.dark .stat-card-savings {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(139, 92, 246, 0.06) 100%);
+}
+
+/* Page slide-in animation */
+.page-enter {
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Progress bar animation */
+.progress-bar {
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Skeleton loading shimmer */
+.shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.dark .shimmer {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Health score circle */
+.health-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+/* Tooltip custom style for recharts */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
