@@ -3,7 +3,7 @@ import { useStore } from '../../store/useStore'
 import { Page } from '../../types'
 
 // Each nav item: icon, label, page key
-const NAV_ITEMS: { icon: React.FC<{ size?: number; className?: string }>; label: string; page: Page }[] = [
+const NAV_ITEMS: { icon: typeof LayoutDashboard; label: string; page: Page }[] = [
   { icon: LayoutDashboard, label: 'Dashboard',     page: 'dashboard'     },
   { icon: ArrowLeftRight,  label: 'Transactions',  page: 'transactions'  },
   { icon: TrendingUp,      label: 'Insights',      page: 'insights'      },
